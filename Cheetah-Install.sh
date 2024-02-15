@@ -1,4 +1,5 @@
 #!/bin/bash
+qemu-img create -f qcow2 harddrives/cheetah.img 40G
 
 qemu-system-ppc -L pc-bios \
 -name "Mac OS X Cheetah" \
@@ -10,4 +11,4 @@ qemu-system-ppc -L pc-bios \
 -device ide-cd,bus=ide.0,drive=OSXInstaller \
 -drive "if=none,format=raw,media=disk,id=OSXInstaller,file=osxinstaller/MacOSX10.0.3.iso,discard=unmap,detect-zeroes=unmap" \
 -device ide-hd,bus=ide.1,drive=HardDrives \
--drive "if=none,format=raw,media=disk,id=HardDrives,file=harddrives/cheetah.img,discard=unmap,detect-zeroes=unmap,detect-zeroes=unmap" \
+-drive "if=none,format=qcow2,media=disk,id=HardDrives,file=harddrives/cheetah.img,discard=unmap,detect-zeroes=unmap" \
